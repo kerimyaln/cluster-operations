@@ -1,12 +1,94 @@
-*.class
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+public class test_ {
+	private static Scanner sc;
+	public static void main(String[] args) {
+		  int a,b;
+		  int [] ilk,ikinci;
+		  sc = new Scanner(System.in);
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+		     System.out.print("Enter the size of the first series: ");
+		     a = sc.nextInt();
+		     ilk=new int [a];
+		     System.out.print("Enter the elements in the first series:");
+		 for(int c=0;c<a;c++){
+		    ilk[c]=sc.nextInt();}
+			 System.out.print("element of the first series: ");
+			 elemanYaz(ilk);  
+			 System.out.println();
+			 
+		    System.out.print("Enter the size of the second series: ");
+			b=sc.nextInt();
+			ikinci=new int[b];
+			System.out.print("Enter the elements of the second array: ");
+		for(int v=0;v<b;v++){
+			ikinci[v]=sc.nextInt();	}
+		    System.out.print("element of the second array: ");
+		    elemanYaz(ikinci);
+		    System.out.println();
+	
+            diziyiEkranaYazdır(kesisimBul(ilk,ikinci), birlesimBul(ilk,ikinci)); } 
 
-# Package Files #
-*.jar
-*.war
-*.ear
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+	public static ArrayList<Integer> kesisimBul(int [] ilk1,int [] ikinci1 ){
+	     	  ArrayList<Integer> kesişim = new ArrayList<Integer>();
+	   	      ArrayList<Integer> kesişim2=new ArrayList<Integer>();
+	   
+	   	 for(int r=0;r<ilk1.length;r++){ 
+			  for(int y=0;y<ikinci1.length;y++){
+		       if(ilk1[r]==ikinci1[y]){
+			    	kesişim.add(ilk1[r]);   } } }
+				    Collections.sort(kesişim);
+				    int n=0;
+			  for(int j=0;j<kesişim.size();j++){ 
+					
+			   if(kesişim.get(n)==kesişim.get(j)){
+					
+					if(0==j){
+					kesişim2.add(kesişim.get(0));	}}
+						
+				    else{
+				    kesişim2.add(kesişim.get(j));     
+			    	n=j;  } }
+				return kesişim2; } 
+	
+	public static ArrayList<Integer> birlesimBul(int[] ilk2,int[]ikinci2 ){
+		      ArrayList<Integer> birleşim = new ArrayList<Integer>();
+		      ArrayList<Integer> birleşim2 = new ArrayList<Integer>();
+		
+	    	for(int ru=0;ru<ilk2.length;ru++){ 
+		    	birleşim.add(ilk2[ru]); }
+	    	
+			for(int rı=0;rı<ikinci2.length;rı++){
+				birleşim.add(ikinci2[rı]); 	}
+			    Collections.sort(birleşim);
+				
+		        int ro=0;
+		        
+			for(int jr=0;jr<birleşim.size();jr++){ 
+				
+				if(birleşim.get(ro)==birleşim.get(jr)){
+				   if(0==jr){
+						birleşim2.add(birleşim.get(0)); } }
+			
+				    else{
+			            birleşim2.add(birleşim.get(jr));     
+				    	ro=jr;	} }
+			            return birleşim2;}
+	
+	public static void elemanYaz(int []dizi){
+		   for(int rc=0;rc<dizi.length;rc++)
+		   	     System.out.print(dizi[rc]+" ");
+	  }
+	  
+	public static void diziyiEkranaYazdır(ArrayList<Integer> kesişim3,ArrayList<Integer> birleşim3 ){
+	             System.out.print("The intersection of the two sequences: ");
+	        for(int w=0;w<kesişim3.size();w++){
+		         System.out.print(kesişim3.get(w)+" "); }
+	             System.out.println();
+	             System.out.print("The combination of the two sequences: ");
+	        for(int e=0;e<birleşim3.size();e++){
+		         System.out.print(birleşim3.get(e)+" "); 
+	    	}
+      }
+ }     
